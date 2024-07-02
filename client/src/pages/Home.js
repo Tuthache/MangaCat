@@ -1,11 +1,12 @@
 import React from "react";
+import DefaultNav from "../components/DefaultNav";
 
 const Home = () => {
-    return (
-        <>
-
-        </>
-    );
+  return (
+    <>
+      <DefaultNav />
+    </>
+  );
 };
 
 export default Home;

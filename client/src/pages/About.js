@@ -1,8 +1,10 @@
 import React from "react";
+import AboutNav from "../components/AboutNav";
 
 const About = () => {
   return (
     <>
+      <AboutNav />
       <div className="py-24 bg-blue-600 text-white text-center">
         <h1 className="text-4xl font-bold mb-4">About Our Expense Tracker</h1>
         <p className="text-lg">
