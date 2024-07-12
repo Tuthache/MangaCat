@@ -10,8 +10,6 @@ const AboutNav = () => {
         <a href="/login" className="mx-8 text-xl hover:text-red-400">
           Login
         </a>
-      </div>
-      <div>
         <a href="/signup" className="mx-8 text-xl hover:text-red-400">
           Sign Up
         </a>
