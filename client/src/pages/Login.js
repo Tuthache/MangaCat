@@ -3,7 +3,7 @@ import AboutNav from "../components/AboutNav";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
-const Signup = () => {
+const Login = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -60,8 +60,8 @@ const Signup = () => {
   return (
     <>
       <AboutNav />
-      <div className="bg-gray-700 min-h-screen flex items-center justify-center">
-        <div className=" max-w-xl text-white mx-auto p-6 mt-10">
+      <div className="bg-gray-700 min-h-screen flex items-center justify-center pb-40">
+        <div className=" max-w-xl text-white mx-auto p-6">
           <h1 className="text-4xl font-bold mb-8 text-center">Login</h1>
           <form onSubmit={handleSignUp}>
             <div className="mb-6">
@@ -73,10 +73,10 @@ const Signup = () => {
               </label>
               <input
                 className="border border-gray-300 text-black rounded-lg px-3 py-2 w-full focus:outline-none focus:border-red-300"
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
+                type="text"
+                id="input"
+                name="input"
+                placeholder="Username or Email"
                 value={formData.password}
                 onChange={handleChange}
               />
@@ -91,10 +91,10 @@ const Signup = () => {
               <input
                 className="border border-gray-300 text-black rounded-lg px-3 py-2 w-full focus:outline-none focus:border-red-300"
                 type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                value={formData.confirmPassword}
+                id="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
                 onChange={handleChange}
               />
             </div>
@@ -104,7 +104,7 @@ const Signup = () => {
                 type="submit"
                 className="bg-red-300 hover:bg-red-700 active:bg-red-100 text-white font-bold py-3 px-6 rounded"
               >
-                Sign Up
+                Login
               </Button>
             </div>
           </form>
@@ -114,4 +114,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

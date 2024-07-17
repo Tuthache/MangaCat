@@ -60,7 +60,7 @@ const Signup = () => {
   return (
     <>
       <AboutNav />
-      <div className="bg-gray-700 min-h-screen flex items-center justify-center">
+      <div className="bg-gray-700 min-h-screen flex items-center justify-center pb-40">
         <div className=" max-w-xl text-white mx-auto p-6 mt-10">
           <h1 className="text-4xl font-bold mb-8 text-center">Sign Up</h1>
           <form onSubmit={handleSignUp}>
