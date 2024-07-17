@@ -7,13 +7,11 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    input: "",
     password: "",
-    confirmPassword: "",
   });
 
-  const [signupSuccess, setSignupSuccess] = useState(false);
+  const [loginSuccess, setLoginSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,14 +21,10 @@ const Login = () => {
     });
   };
 
-  const handleSignUp = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
     try {
-      const response = await fetch("http://local:8000/signup", {
+      const response = await fetch("http://local:8000/login", {
         method: "Post",
         headers: {
           "Content-Type": "application/json",
@@ -41,21 +35,21 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         alert(data.message);
-        setSignupSuccess(true);
+        setLoginSuccess(true);
       } else {
         const errorData = await response.json();
         alert(errorData.error);
       }
     } catch (error) {
-      console.error("Error during signup: ", error);
+      console.error("Error during login: ", error);
     }
   };
 
   useEffect(() => {
-    if (signupSuccess) {
-      navigate("/login");
+    if (loginSuccess) {
+      navigate("/home");
     }
-  }, [signupSuccess, navigate]);
+  }, [loginSuccess, navigate]);
 
   return (
     <>
@@ -63,11 +57,11 @@ const Login = () => {
       <div className="bg-gray-700 min-h-screen flex items-center justify-center pb-40">
         <div className=" max-w-xl text-white mx-auto p-6">
           <h1 className="text-4xl font-bold mb-8 text-center">Login</h1>
-          <form onSubmit={handleSignUp}>
+          <form onSubmit={handleLogin}>
             <div className="mb-6">
               <label
                 className="block text-white text-sm font-bold mb-2"
-                htmlFor="password"
+                htmlFor="input"
               >
                 Username or Email
               </label>
@@ -77,7 +71,7 @@ const Login = () => {
                 id="input"
                 name="input"
                 placeholder="Username or Email"
-                value={formData.password}
+                value={formData.input}
                 onChange={handleChange}
               />
             </div>
