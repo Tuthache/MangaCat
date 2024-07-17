@@ -22,12 +22,15 @@ const About = () => {
               example, manga can be set to the following options: Completed,
               Planning to read, and Currently reading.
             </p>
-            {/*
-            <h2 className="text-2xl text-white font-bold mb-4">Plan Manga</h2>
-            <p className="text-lg text-white mb-8">
 
+            <h2 className="text-2xl text-white font-bold mb-4">List Manga</h2>
+            <p className="text-lg text-white mb-8">
+              MangaCat offers a wide catalog of mangas ranging through different
+              genres. Users are able to interact with all these mangas as well
+              as having their own personalized list of completed manga. Users
+              are able to remove and add mangas onto their personalized list.
             </p>
-            */}
+
             <h2 className="text-2xl text-white font-bold mb-4">Rate Manga</h2>
             <p className="text-lg text-white mb-8">
               MangaCat features the ability to allow users to rate different
@@ -42,13 +45,21 @@ const About = () => {
               MangaCat provides a recommendation feature which will recommend
               mangas which the user currently has not set as completed based
               upon metrics such as genres of previously completed manga, as well
-              as ratings given to those previously completed manga.
+              as ratings given to those previously completed manga. In the
+              future we plan to add the function of allowing users have a
+              "genre" of recommendations to be removed from future
+              recommendations.
             </p>
           </div>
         </div>
         <footer className="bg-red-400 text-white py-8 text-center">
           <div className="container mx-auto">
             <p>MangaCat: The goto Manga Cataloging Application</p>
+            <p>
+              MangaCat utilizes the Anilist API in order to retrieve all manga
+              displayed on this site
+            </p>
+            <p>Author: Austin Nguyen</p>
           </div>
         </footer>
       </div>
