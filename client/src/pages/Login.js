@@ -7,7 +7,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    input: "",
+    email: "",
     password: "",
   });
 
@@ -61,17 +61,17 @@ const Login = () => {
             <div className="mb-6">
               <label
                 className="block text-white text-sm font-bold mb-2"
-                htmlFor="input"
+                htmlFor="email"
               >
-                Username or Email
+                Email
               </label>
               <input
                 className="border border-gray-300 text-black rounded-lg px-3 py-2 w-full focus:outline-none focus:border-red-300"
                 type="text"
-                id="input"
-                name="input"
+                id="email"
+                name="email"
                 placeholder="Username or Email"
-                value={formData.input}
+                value={formData.email}
                 onChange={handleChange}
               />
             </div>
