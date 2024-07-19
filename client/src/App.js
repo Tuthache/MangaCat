@@ -5,6 +5,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Manga from "./pages/Manga";
+import MangaList from "./pages/MangaList";
 import Recommendation from "./pages/Recommendation";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/manga" element={<Manga />} />
+        <Route path="/mangalist" element={<MangaList />} />
         <Route path="/recommendation" element={<Recommendation />} />
       </Routes>
     </Router>
