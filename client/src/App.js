@@ -5,7 +5,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Manga from "./pages/Manga";
-import MangaList from "./pages/MangaList";
+import MangaList from "./pages/Mangalist";
 import Recommendation from "./pages/Recommendation";
 
 function App() {
@@ -16,8 +16,10 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/manga" element={<Manga />} />
+        {/*User profile and maybe some highlights*/}
+        <Route path="/manga" element={<Manga />} /> {/*User's own mangalist */}
         <Route path="/mangalist" element={<MangaList />} />
+        {/*Site's mangalist */}
         <Route path="/recommendation" element={<Recommendation />} />
       </Routes>
     </Router>
