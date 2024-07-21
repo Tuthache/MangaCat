@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 
 class User {
   constructor(data, connection) {
-    this.name = data.name;
+    this.username = data.username;
     this.email = data.email;
     this.password = data.password;
     this.connection = data.connection;

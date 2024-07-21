@@ -7,7 +7,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -30,8 +30,8 @@ const Signup = () => {
       return;
     }
     try {
-      const response = await fetch("http://local:8000/signup", {
-        method: "Post",
+      const response = await fetch("http://localhost:8000/signup", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -68,17 +68,17 @@ const Signup = () => {
               <div className="w-full md:w-1/2 pr-1">
                 <label
                   className="block text-white text-sm font-bold mb-2"
-                  htmlFor="name"
+                  htmlFor="username"
                 >
                   Username
                 </label>
                 <input
                   className="border border-gray-300 text-black rounded-lg px-3 py-2 w-full focus:outline-none focus:border-red-300"
                   type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Name"
-                  value={formData.name}
+                  id="username"
+                  name="username"
+                  placeholder="Username"
+                  value={formData.username}
                   onChange={handleChange}
                 />
               </div>

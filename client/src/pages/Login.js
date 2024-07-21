@@ -24,8 +24,8 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://local:8000/login", {
-        method: "Post",
+      const response = await fetch("http://localhost:8000/login", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -78,7 +78,7 @@ const Login = () => {
             <div className="mb-8">
               <label
                 className="block text-white text-sm font-bold mb-2"
-                htmlFor="confirmpassword"
+                htmlFor="password"
               >
                 Password
               </label>

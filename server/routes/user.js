@@ -32,12 +32,18 @@ router.post("/login", async (req, res) => {
           .status(401)
           .json({ Login: false, error: "Invalid email or password" });
       }
+
+      return res.status(200).json({
+        Login: true,
+        message: "Login Successful",
+      });
     });
   } catch (error) {
     console.error("Error during login: ", error);
     return res.status(500).json({ error: "Intenal server error" });
   }
 });
+
 router.post("/signup", userRegisterValidator, register);
 
 module.exports = router;

@@ -5,9 +5,9 @@ async function createUsersTable() {
   const createTableQuery = `
     CREATE TABLE IF NOT EXISTS user (
       user_id INT PRIMARY KEY AUTO_INCREMENT,
-      user_username VARCHAR(45) NOT NULL,
-      user_password VARCHAR(45) NOT NULL,
-      user_email VARCHAR(100) UNIQUE NOT NULL
+      username VARCHAR(45) NOT NULL,
+      password VARCHAR(45) NOT NULL,
+      email VARCHAR(100) UNIQUE NOT NULL
     );
   `;
   try {
@@ -33,7 +33,7 @@ async function register(req, res) {
 
     const insertQuery = `
       INSERT INTO user (username, email, password) 
-      VALUES (?, ?, ?, ?)
+      VALUES (?, ?, ?)
     `;
 
     const values = [username, email, hashedPassword];
@@ -59,7 +59,7 @@ async function register(req, res) {
     console.error("Error registering user: ", error);
     res
       .status(500)
-      .json({ message: "An error occurred while resgistering user." });
+      .json({ message: "An error occurred while registering user." });
   }
 }
 
