@@ -1,12 +1,13 @@
-import React from "react"
+import React from "react";
 import DefaultNav from "../components/DefaultNav";
-
+import MiniProfile from "../components/MiniProfile";
 const Recommendation = () => {
-    return (
-        <>
-        <DefaultNav/>
-        </>
-    );
-}
+  return (
+    <>
+      <DefaultNav />
+      <MiniProfile />
+    </>
+  );
+};
 
-export default Recommendation
+export default Recommendation;

@@ -17,6 +17,11 @@ const DefaultNav = () => {
           My Manga
         </a>
       </div>
+      <div>
+        <a href="/" className="mx-8 text-xl hover:text-gray-400">
+          Log out
+        </a>
+      </div>
     </nav>
   );
 };
