@@ -1,11 +1,11 @@
 import React from "react";
 import DefaultNav from "../components/DefaultNav";
-import MiniProfile from "../components/MiniProfile";
+import Sidebar from "../components/Sidebar";
 const Recommendation = () => {
   return (
     <>
       <DefaultNav />
-      <MiniProfile />
+      <Sidebar />
     </>
   );
 };
