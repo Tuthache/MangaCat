@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<About />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home/*" element={<Home />} />
         {/*User profile and maybe some highlights*/}
         <Route path="/manga" element={<Manga />} /> {/*User's own mangalist */}
         <Route path="/mangalist" element={<MangaList />} />
