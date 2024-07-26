@@ -1,6 +1,6 @@
 import React from "react";
 
-const MiniProfile = () => {
+const Sidebar = () => {
   return (
     <>
       <div></div>
@@ -8,4 +8,4 @@ const MiniProfile = () => {
   );
 };
 
-export default MiniProfile;
+export default Sidebar;
