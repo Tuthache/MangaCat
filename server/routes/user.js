@@ -5,6 +5,11 @@ const connection = require("../config/connection.js");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 
+const userInfo = {
+  username: "",
+  user_id: 0,
+};
+
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -45,5 +50,13 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/signup", userRegisterValidator, register);
+
+router.post("/userInfo", (req, res) => {
+  if (userInfo.user_id) {
+    return res.status(200).json(userInfo);
+  } else {
+    return res.status(401).json({ error: "Unathorized" });
+  }
+});
 
 module.exports = router;
