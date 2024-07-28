@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DefaultNav from "../components/DefaultNav";
 import Sidebar from "../components/Sidebar";
 
 const Manga = () => {
+  const [user, setUser] = useState({});
   return (
     <>
       <DefaultNav />
-      <Sidebar />
+      <Sidebar user={user} />
     </>
   );
 };
