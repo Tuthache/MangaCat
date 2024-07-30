@@ -1,6 +1,6 @@
 const connection = require("../config/connection.js");
 
-class Usermanga {
+class UserManga {
   constructor(data) {
     this.user_id = data.user_id;
     this.manga_id = data.manga_id;
@@ -65,3 +65,5 @@ class Usermanga {
     }
   }
 }
+
+module.exports = UserManga;
