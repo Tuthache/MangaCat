@@ -1,4 +1,5 @@
 const Manga = require("../models/manga.js");
+const connection = require("../config/connection.js");
 const { fetchMangaData } = require("../services/retrieveManga.js");
 
 async function createMangaTable() {
@@ -35,6 +36,8 @@ async function populateDatabase(req, res) {
   try {
     const mangaData = await fetchMangaData();
 
+    console.log("Fetched manga data: ", mangaData);
+
     const mangaPromises = mangaData.map((manga) => {
       const manga_id = manga.id;
       const title = manga.title.romaji;
@@ -49,6 +52,7 @@ async function populateDatabase(req, res) {
     res.status(200).json({ message: "Database populated successfully" });
   } catch (error) {
     res.status(500).json({ message: "Error during database population" });
+    console.error("Error during populating database: ", error);
   }
 }
 

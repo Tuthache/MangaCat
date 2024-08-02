@@ -51,7 +51,7 @@ app.use(
 );
 
 app.use("/", userRoutes);
-//app.use("/home/manga", mangaRoutes);
+app.use("/api", mangaRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
