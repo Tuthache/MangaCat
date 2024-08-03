@@ -27,7 +27,7 @@ const query = `
 async function fetchMangaData() {
   try {
     const response = await axios.post("https://graphql.anilist.co", { query });
-    console.log("Response from Anilist: ", response.data);
+    //console.log("Response from Anilist: ", response.data);
     return response.data.data.Page.media;
   } catch (error) {
     console.error("Error fetching data from Anilist: ", error);

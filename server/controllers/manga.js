@@ -36,7 +36,7 @@ async function populateDatabase(req, res) {
   try {
     const mangaData = await fetchMangaData();
 
-    console.log("Fetched manga data: ", mangaData);
+    //console.log("Fetched manga data: ", mangaData);
 
     const mangaPromises = mangaData.map((manga) => {
       const manga_id = manga.id;
