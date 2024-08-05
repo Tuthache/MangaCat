@@ -2,24 +2,26 @@ const axios = require("axios");
 
 const query = `
     query {
-    Media(type: MANGA, sort: POPULARITY_DESC, isAdult: false) {
-        id
-        title {
-            romaji
-        }
-        staff {
-        nodes {
-            name {
-                full
-            }
-        }
-        }
-        genres
-        chapters
-        status
-        description
+      Page (page: 1, perPage: 50) {
+          media(type: MANGA, sort: POPULARITY_DESC, isAdult: false) {
+              id
+              title {
+                  romaji
+              }
+              staff {
+              nodes {
+                  name {
+                      full
+                  }
+              }
+              }
+              genres
+              chapters
+              status
+              description
+          }
+      }
     }
-}
 `;
 
 async function fetchMangaData() {
