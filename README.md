@@ -72,3 +72,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## Project Details
 
 This project creates a Manga Catalog which will pull different mangas from the Anilist API and allow users to keep track of manga they've completed. This project is built using React, Node, and MySQL.
+
+To run the application navigate into the server directory and run the following commands: **node server.js**  and node **retrieveManga.js** in a separate CMD navigate to the client directory and run the following command: **npm start**
