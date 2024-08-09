@@ -56,7 +56,22 @@ async function populateDatabase(req, res) {
   }
 }
 
+async function getAllManga(req, res) {
+  try {
+    const query = `
+      SELECT * FROM manga
+    `;
+    await connection.query(query);
+  } catch (error) {
+    res.status(500).json({
+      message: "Error retrieving manga needed to be displayed for manga list",
+    });
+    console.error("Error retrieving manga for manga list, ", error);
+  }
+}
+
 module.exports = {
   retrieveManga,
   populateDatabase,
+  getAllManga,
 };
