@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
 
 router.post("/signup", userRegisterValidator, register);
 
-router.post("/userInfo", (req, res) => {
+router.get("/userInfo", (req, res) => {
   if (userInfo.user_id) {
     return res.status(200).json(userInfo);
   } else {
