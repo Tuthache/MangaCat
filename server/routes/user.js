@@ -23,7 +23,7 @@ router.post("/login", async (req, res) => {
         return res.status(500).json({ error: "Internal Sever Error" });
       }
 
-      if (result.length == 0) {
+      if (result.length === 0) {
         return res
           .status(401)
           .json({ Login: false, error: "Invalid email or password" });
@@ -31,6 +31,9 @@ router.post("/login", async (req, res) => {
 
       const user = result[0];
       const passwordMatch = await bcrypt.compare(password, user.password);
+
+      userInfo.username = user.username;
+      userInfo.user_id = user.user_id;
 
       if (!passwordMatch) {
         return res
