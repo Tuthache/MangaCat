@@ -52,21 +52,23 @@ const MangaList = () => {
   return (
     <div className="flex flex-col h-screen">
       <DefaultNav />
-      <div className="flex flex-1">
-        <Sidebar user={user} />
-        <div className="flex-1 bg-gray-700">
-          {mangaList.map((manga) => (
-            <div
-              key={manga.manga_id}
-              onClick={() => handleMangaClick(manga)}
-              className="mb-2 text-center text-white bg-gray-500 rounded-lg shadow p-4 hover:bg-gray-300 relative"
-            >
-              <p>Title: {manga.title}</p>
-              <p>Author: {manga.author}</p>
-              <p>Genre: {manga.genre}</p>
-              <p>Status: {manga.status}</p>
-            </div>
-          ))}
+      <div className="flex flex-1 overflow-hidden">
+        <Sidebar user={user} className="w-1/4" />
+        <div className="w-3/4 flex-1 bg-gray-700 overflow-y-auto">
+          <div className="p-4 grid grid-cols-3 gap-4">
+            {mangaList.map((manga) => (
+              <div
+                key={manga.manga_id}
+                onClick={() => handleMangaClick(manga)}
+                className="mb-2 text-center text-white bg-red-400 rounded-lg shadow p-4 hover:bg-red-500 cursor-pointer"
+              >
+                <p>Title: {manga.title}</p>
+                <p>Author: {manga.author}</p>
+                <p>Genre: {manga.genre}</p>
+                <p>Status: {manga.status}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
