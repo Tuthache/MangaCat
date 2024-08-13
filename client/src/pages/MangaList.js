@@ -6,6 +6,8 @@ const MangaList = () => {
   const [user, setUser] = useState({});
   const [mangaList, setMangaList] = useState([]);
 
+  const handleMangaClick = async () => {};
+
   useEffect(() => {
     fetch("http://localhost:8000/userInfo", {
       method: "GET",
@@ -39,7 +41,12 @@ const MangaList = () => {
       .then((data) => {
         setMangaList(data);
       })
-      .catch(() => {});
+      .catch((error) => {
+        console.error(
+          "Error getting manga to be displayed for manga catalog, ",
+          error
+        );
+      });
   }, []);
 
   return (
@@ -47,7 +54,20 @@ const MangaList = () => {
       <DefaultNav />
       <div className="flex flex-1">
         <Sidebar user={user} />
-        <div className="flex-1 bg-gray-700">{/* Main content goes here */}</div>
+        <div className="flex-1 bg-gray-700">
+          {mangaList.map((manga) => (
+            <div
+              key={manga.manga_id}
+              onClick={() => handleMangaClick(manga)}
+              className="mb-2 text-center text-white bg-gray-500 rounded-lg shadow p-4 hover:bg-gray-300 relative"
+            >
+              <p>Title: {manga.title}</p>
+              <p>Author: {manga.author}</p>
+              <p>Genre: {manga.genre}</p>
+              <p>Status: {manga.status}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
