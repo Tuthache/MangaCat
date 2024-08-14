@@ -11,7 +11,7 @@ class Manga {
 
   static async create(data) {
     const query = `
-      INSERT INTO manga (manga_id, title, author_name, genre, status)
+      INSERT IGNORE INTO manga (manga_id, title, author_name, genre, status)
       VALUES (?, ?, ?, ?, ?)
     `;
     const values = [

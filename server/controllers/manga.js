@@ -61,7 +61,17 @@ async function getAllManga(req, res) {
     const query = `
       SELECT * FROM manga
     `;
-    await connection.query(query);
+    connection.query(query, (error, results) => {
+      if (error) {
+        res.status(500).json({
+          message:
+            "Error retrieving manga needed to be displayed for manga list",
+        });
+        console.error("Error retrieving manga for manga list, ", error);
+      } else {
+        res.json(results); // Send only the result rows as JSON
+      }
+    });
   } catch (error) {
     res.status(500).json({
       message: "Error retrieving manga needed to be displayed for manga list",
