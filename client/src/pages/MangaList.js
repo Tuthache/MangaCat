@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import DefaultNav from "../components/DefaultNav";
 import Sidebar from "../components/Sidebar";
+import MangaModal from "../components/MangaModal";
 
 const MangaList = () => {
   const [user, setUser] = useState({});
   const [mangaList, setMangaList] = useState([]);
-
-  const handleMangaClick = async () => {};
+  const [selectedManga, setSelectedManga] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:8000/userInfo", {
@@ -49,13 +50,23 @@ const MangaList = () => {
       });
   }, []);
 
+  const handleMangaClick = (manga) => {
+    setSelectedManga(manga);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedManga(null);
+  };
+
   return (
     <div className="flex flex-col h-screen">
       <DefaultNav />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar user={user} className="w-1/4" />
         <div className="w-3/4 flex-1 bg-gray-700 overflow-y-auto">
-          <div className="p-4 grid grid-cols-3 gap-4">
+          <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {mangaList.map((manga) => (
               <div
                 key={manga.manga_id}
@@ -71,6 +82,15 @@ const MangaList = () => {
           </div>
         </div>
       </div>
+      {selectedManga && (
+        <MangaModal
+          user={user}
+          manga={selectedManga}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          isInUserList={false} //create api endpoint to select from usermanga table where user_id = user_id and manga_id = selectedManga.manga_id
+        />
+      )}
     </div>
   );
 };
