@@ -70,9 +70,25 @@ async function updateStatusManga(req, res) {
   }
 }
 
+async function getAllUserManga(req, res) {
+  try {
+    const user_id = req.body;
+    await UserManga.getAllUserManga(user_id);
+    res
+      .status(200)
+      .json({ message: "Retrieved manga from specified user successfully" });
+  } catch (error) {
+    console.error("Error retrieving manga from specified user: ", error);
+    res
+      .status(500)
+      .json({ message: "Error retrieving manga from specified user" });
+  }
+}
+
 module.exports = {
   addManga,
   removeManga,
   rateManga,
   updateStatusManga,
+  getAllUserManga,
 };

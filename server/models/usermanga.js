@@ -64,6 +64,19 @@ class UserManga {
       throw error;
     }
   }
+
+  static async getAllUserManga(user_id) {
+    const query = "SELECT * FROM usermanga WHERE user_id = ?";
+    const values = user_id;
+
+    try {
+      await connection.query(query, values);
+      return { message: "Retrieved manga for user successfully" };
+    } catch (error) {
+      console.error("Error retrieving manga for user: ", user_id);
+      throw error;
+    }
+  }
 }
 
 module.exports = UserManga;
