@@ -7,6 +7,7 @@ const MySQLStore = require("express-mysql-session")(session);
 const cors = require("cors");
 const userRoutes = require("./routes/user");
 const mangaRoutes = require("./routes/manga");
+const userMangaRoutes = require("./routes/usermanga");
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -51,6 +52,7 @@ app.use(
 );
 
 app.use("/", userRoutes);
+app.use("/usermanga", userMangaRoutes);
 app.use("/api", mangaRoutes);
 
 app.listen(port, () => {
