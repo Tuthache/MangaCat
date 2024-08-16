@@ -74,7 +74,7 @@ const MangaList = () => {
                 className="mb-2 text-center text-white bg-red-400 rounded-lg shadow p-4 hover:bg-red-500 cursor-pointer"
               >
                 <p>Title: {manga.title}</p>
-                <p>Author: {manga.author}</p>
+                <p>Author: {manga.author_name}</p>
                 <p>Genre: {manga.genre}</p>
                 <p>Status: {manga.status}</p>
               </div>

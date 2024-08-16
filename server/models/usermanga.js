@@ -38,7 +38,7 @@ class UserManga {
   static async rateManga(user_id, manga_id, manga_rating) {
     const query =
       "UPDATE usermanga SET manga_rating = ? where user_id = ? AND manga_id = ?";
-    const values = [user_id, manga_id, manga_rating];
+    const values = [manga_rating, user_id, manga_id];
 
     try {
       await connection.query(query, values);
@@ -54,26 +54,13 @@ class UserManga {
   static async updateStatusManga(user_id, manga_id, reading_status) {
     const query =
       "UPDATE usermanga SET reading_status = ? WHERE user_id = ? AND manga_id = ?";
-    const values = [user_id, manga_id, reading_status];
+    const values = [reading_status, user_id, manga_id];
 
     try {
       await connection.query(query, values);
       return { message: "Updated Manga status successfully" };
     } catch (error) {
       console.error("Error updating status of manga from usermanga table");
-      throw error;
-    }
-  }
-
-  static async getAllUserManga(user_id) {
-    const query = "SELECT * FROM usermanga WHERE user_id = ?";
-    const values = user_id;
-
-    try {
-      await connection.query(query, values);
-      return { message: "Retrieved manga for user successfully" };
-    } catch (error) {
-      console.error("Error retrieving manga for user: ", user_id);
       throw error;
     }
   }

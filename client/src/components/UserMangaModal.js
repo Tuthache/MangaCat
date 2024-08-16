@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const UserMangaModal = ({ user, manga, isOpen, onClose }) => {
+const UserMangaModal = ({ user, manga, isOpen, onClose, onRemove, onSave }) => {
   const [readingStatus, setReadingStatus] = useState(manga.readingStatus || "");
   const [rating, setRating] = useState(manga.rating || 0);
+
+  useEffect(() => {
+    if (manga) {
+      setReadingStatus(manga.readingStatus || "");
+      setRating(manga.rating || 0);
+    }
+  }, [manga]);
 
   const handleRemove = async () => {
     const body = {
@@ -20,6 +27,7 @@ const UserMangaModal = ({ user, manga, isOpen, onClose }) => {
       });
       if (response.ok) {
         console.log("Response received: ", response);
+        onRemove(manga.manga_id);
         onClose();
       } else {
         console.error("Error removing manga");
@@ -33,7 +41,7 @@ const UserMangaModal = ({ user, manga, isOpen, onClose }) => {
     const body = {
       user_id: user.user_id,
       manga_id: manga.manga_id,
-      rating: rating,
+      manga_rating: rating !== "" ? rating : 0,
     };
     try {
       const response = await fetch("http://localhost:8000/usermanga/rate", {
@@ -56,7 +64,7 @@ const UserMangaModal = ({ user, manga, isOpen, onClose }) => {
     const body = {
       user_id: user.user_id,
       manga_id: manga.manga_id,
-      reading_status: readingStatus,
+      reading_status: readingStatus || "",
     };
     try {
       const response = await fetch("http://localhost:8000/usermanga/status", {
@@ -78,8 +86,11 @@ const UserMangaModal = ({ user, manga, isOpen, onClose }) => {
   const handleSave = async () => {
     await handleReadingStatusUpdate();
     await handleRatingUpdate();
+    onSave();
     onClose();
   };
+
+  const isSaveDisabled = !readingStatus;
 
   if (!isOpen) {
     return null;
@@ -99,10 +110,10 @@ const UserMangaModal = ({ user, manga, isOpen, onClose }) => {
             <option value="" disabled>
               Select Status
             </option>
-            <option value="currently reading">Currently Reading</option>
-            <option value="completed">Completed</option>
-            <option value="dropped">Dropped</option>
-            <option value="plan to read">Plan to Read</option>
+            <option value="Currently Reading">Currently Reading</option>
+            <option value="Completed">Completed</option>
+            <option value="Dropped">Dropped</option>
+            <option value="Plan to Read">Plan to Read</option>
           </select>
         </div>
         <div className="mb-4">
@@ -119,7 +130,10 @@ const UserMangaModal = ({ user, manga, isOpen, onClose }) => {
         <div className="flex justify-end">
           <button
             onClick={handleSave}
-            className="bg-red-500 text-white px-4 py-2 rounded mr-2"
+            className={`px-4 py-2 rounded mr-2 ${
+              isSaveDisabled ? "bg-gray-500" : "bg-red-500"
+            } text-white`}
+            disabled={isSaveDisabled}
           >
             Save
           </button>

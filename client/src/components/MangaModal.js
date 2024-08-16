@@ -36,6 +36,8 @@ const MangaModal = ({ user, manga, isOpen, onClose, isInUserList }) => {
     onClose();
   };
 
+  const isSaveDisabled = !readingStatus;
+
   if (!isOpen) {
     return null;
   }
@@ -54,10 +56,10 @@ const MangaModal = ({ user, manga, isOpen, onClose, isInUserList }) => {
             <option value="" disabled>
               Select Status
             </option>
-            <option value="currently reading">Currently Reading</option>
-            <option value="completed">Completed</option>
-            <option value="dropped">Dropped</option>
-            <option value="plan to read">Plan to Read</option>
+            <option value="Currently Reading">Currently Reading</option>
+            <option value="Completed">Completed</option>
+            <option value="Dropped">Dropped</option>
+            <option value="Plan to Read">Plan to Read</option>
           </select>
         </div>
         <div className="mb-4">
@@ -74,7 +76,10 @@ const MangaModal = ({ user, manga, isOpen, onClose, isInUserList }) => {
         <div className="flex justify-end">
           <button
             onClick={handleSave}
-            className="bg-red-500 text-white px-4 py-2 rounded mr-2"
+            className={`px-4 py-2 rounded mr-2 ${
+              isSaveDisabled ? "bg-gray-500" : "bg-red-500"
+            } text-white`}
+            disabled={isSaveDisabled}
           >
             Save
           </button>

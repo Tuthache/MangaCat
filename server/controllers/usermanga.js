@@ -72,11 +72,24 @@ async function updateStatusManga(req, res) {
 
 async function getAllUserManga(req, res) {
   try {
-    const user_id = req.body;
-    await UserManga.getAllUserManga(user_id);
-    res
-      .status(200)
-      .json({ message: "Retrieved manga from specified user successfully" });
+    const query = `
+     SELECT um.user_id, um.manga_id, um.reading_status, um.manga_rating,
+            m.title, m.author_name, m.genre, m.status
+      FROM usermanga um
+      JOIN manga m ON um.manga_id = m.manga_id
+      WHERE um.user_id = ?
+    `;
+    const values = req.query.user_id;
+    connection.query(query, values, (error, results) => {
+      if (error) {
+        res
+          .status(500)
+          .json({ message: "Error retrieving manga for specified user" });
+        console.error("Error retrieving manga for specified user: ", error);
+      } else {
+        res.json(results);
+      }
+    });
   } catch (error) {
     console.error("Error retrieving manga from specified user: ", error);
     res
