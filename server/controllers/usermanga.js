@@ -98,10 +98,58 @@ async function getAllUserManga(req, res) {
   }
 }
 
+async function getCompletedMangaCount(req, res) {
+  try {
+    const { user_id } = req.body;
+    await UserManga.getCompletedMangaCount(user_id);
+    res
+      .status(200)
+      .json({ message: "Retrieved count of completed manga successfully" });
+  } catch (error) {
+    console.error("Error retrieving count of completed Manga: ", error);
+    res
+      .status(500)
+      .json({ message: "Error retrieving count of completed Manga" });
+  }
+}
+
+async function getPlannedMangaCount(req, res) {
+  try {
+    const { user_id } = req.body;
+    await UserManga.getPlannedMangaCount(user_id);
+    res
+      .status(200)
+      .json({ message: "Retrieved count of planned manga successfully" });
+  } catch (error) {
+    console.error("Error retrieving count of planned Manga: ", error);
+    res
+      .status(500)
+      .json({ message: "Error retrieving count of planned Manga" });
+  }
+}
+
+async function getCurrentMangaCount(req, res) {
+  try {
+    const { user_id } = req.body;
+    await UserManga.getCurrentMangaCount(user_id);
+    res
+      .status(200)
+      .json({ message: "Retrieved count of current manga successfully" });
+  } catch (error) {
+    console.error("Error retrieving count of current Manga: ", error);
+    res
+      .status(500)
+      .json({ message: "Error retrieving count of current Manga" });
+  }
+}
+
 module.exports = {
   addManga,
   removeManga,
   rateManga,
   updateStatusManga,
   getAllUserManga,
+  getCompletedMangaCount,
+  getPlannedMangaCount,
+  getCurrentMangaCount,
 };

@@ -64,6 +64,46 @@ class UserManga {
       throw error;
     }
   }
+
+  static async getCompletedMangaCount(user_id) {
+    const query =
+      "SELECT COUNT(*) AS count FROM usermanga where user_id = ? AND reading_status = 'Completed' ";
+    const values = [user_id];
+
+    try {
+      await connection.query(query, values);
+      return { message: "Completed manga count retrieved successfully" };
+    } catch (error) {
+      console.error("Error retrieving completed manga count");
+      throw error;
+    }
+  }
+  static async getPlannedMangaCount(user_id) {
+    const query =
+      "SELECT COUNT(*) AS count FROM usermanga where user_id = ? AND reading_status = 'Plan to Read' ";
+    const values = [user_id];
+
+    try {
+      await connection.query(query, values);
+      return { message: "Completed manga count retrieved successfully" };
+    } catch (error) {
+      console.error("Error retrieving completed manga count");
+      throw error;
+    }
+  }
+  static async getCurrentMangaCount(user_id) {
+    const query =
+      "SELECT COUNT(*) AS count FROM usermanga where user_id = ? AND reading_status = 'Currently Reading' ";
+    const values = [user_id];
+
+    try {
+      await connection.query(query, values);
+      return { message: "Completed manga count retrieved successfully" };
+    } catch (error) {
+      console.error("Error retrieving completed manga count");
+      throw error;
+    }
+  }
 }
 
 module.exports = UserManga;
