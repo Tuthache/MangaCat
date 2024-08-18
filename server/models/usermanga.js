@@ -71,8 +71,8 @@ class UserManga {
     const values = [user_id];
 
     try {
-      await connection.query(query, values);
-      return { message: "Completed manga count retrieved successfully" };
+      const [result] = await connection.query(query, values);
+      return result[0].count;
     } catch (error) {
       console.error("Error retrieving completed manga count");
       throw error;
@@ -84,8 +84,8 @@ class UserManga {
     const values = [user_id];
 
     try {
-      await connection.query(query, values);
-      return { message: "Completed manga count retrieved successfully" };
+      const [result] = await connection.query(query, values);
+      return result[0].count;
     } catch (error) {
       console.error("Error retrieving completed manga count");
       throw error;
@@ -97,8 +97,8 @@ class UserManga {
     const values = [user_id];
 
     try {
-      await connection.query(query, values);
-      return { message: "Completed manga count retrieved successfully" };
+      const [result] = await connection.query(query, values);
+      return result[0].count;
     } catch (error) {
       console.error("Error retrieving completed manga count");
       throw error;
