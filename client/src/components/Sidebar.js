@@ -38,16 +38,6 @@ const Sidebar = ({ user }) => {
           >
             My Profile
           </button>
-          <button
-            className={`w-40 mt-10 py-2 px-2 mb-4 rounded font-bold ${
-              activeButton === "options"
-                ? "bg-red-600"
-                : "bg-red-300 hover:bg-red-600"
-            } text-white`}
-            onClick={() => handleButtonClick("options")}
-          >
-            Options
-          </button>
         </div>
       </div>
     </>

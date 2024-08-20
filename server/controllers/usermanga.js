@@ -99,6 +99,7 @@ async function getAllUserManga(req, res) {
 }
 
 async function getCompletedMangaCount(req, res) {
+  /*
   try {
     const { user_id } = req.body;
     const count = await UserManga.getCompletedMangaCount(user_id);
@@ -109,9 +110,31 @@ async function getCompletedMangaCount(req, res) {
       .status(500)
       .json({ message: "Error retrieving count of completed Manga" });
   }
+  */
+  try {
+    const query = `SELECT COUNT(*) AS count FROM usermanga WHERE user_id = ? AND reading_status = 'Completed' `;
+    const values = req.query.user_id;
+    connection.query(query, values, (error, results) => {
+      if (error) {
+        res.status(500).json({
+          message: "Error retrieving completed manga for specified user",
+        });
+        console.error(
+          "Error retrieving completed manga for specified user: ",
+          error
+        );
+      } else {
+        res.status(200).json(results[0].count);
+      }
+    });
+  } catch (error) {
+    console.error("Error retrieving completed manga count: ", error);
+    res.status(500).json({ message: "Error retrieving completed manga count" });
+  }
 }
 
 async function getPlannedMangaCount(req, res) {
+  /*
   try {
     const { user_id } = req.body;
     const count = await UserManga.getPlannedMangaCount(user_id);
@@ -122,9 +145,31 @@ async function getPlannedMangaCount(req, res) {
       .status(500)
       .json({ message: "Error retrieving count of planned Manga" });
   }
+  */
+  try {
+    const query = `SELECT COUNT(*) AS count FROM usermanga WHERE user_id = ? AND reading_status = 'Plan to Read' `;
+    const values = req.query.user_id;
+    connection.query(query, values, (error, results) => {
+      if (error) {
+        res.status(500).json({
+          message: "Error retrieving planned manga for specified user",
+        });
+        console.error(
+          "Error retrieving planned manga for specified user: ",
+          error
+        );
+      } else {
+        res.status(200).json(results[0].count);
+      }
+    });
+  } catch (error) {
+    console.error("Error retrieving planned manga count: ", error);
+    res.status(500).json({ message: "Error retrieving planned manga count" });
+  }
 }
 
 async function getCurrentMangaCount(req, res) {
+  /*
   try {
     const { user_id } = req.body;
     const count = await UserManga.getCurrentMangaCount(user_id);
@@ -134,6 +179,30 @@ async function getCurrentMangaCount(req, res) {
     res
       .status(500)
       .json({ message: "Error retrieving count of current Manga" });
+  }
+  */
+  try {
+    const query = `SELECT COUNT(*) AS count FROM usermanga WHERE user_id = ? AND reading_status = 'Currently Reading' `;
+    const values = req.query.user_id;
+    connection.query(query, values, (error, results) => {
+      if (error) {
+        res.status(500).json({
+          message:
+            "Error retrieving currently reading manga for specified user",
+        });
+        console.error(
+          "Error retrieving currently reading manga for specified user: ",
+          error
+        );
+      } else {
+        res.status(200).json(results[0].count);
+      }
+    });
+  } catch (error) {
+    console.error("Error retrieving currently reading manga count: ", error);
+    res
+      .status(500)
+      .json({ message: "Error retrieving currently reading manga count" });
   }
 }
 

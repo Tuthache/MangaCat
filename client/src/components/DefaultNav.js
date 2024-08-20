@@ -7,7 +7,7 @@ const DefaultNav = () => {
         <a href="/home">MangaCat</a>
       </div>
       <div>
-        <a href="/recommendations" className="mx-8 text-xl hover:text-gray-400">
+        <a href="/recommendation" className="mx-8 text-xl hover:text-gray-400">
           Recommendations
         </a>
         <a href="/mangalist" className="mx-8 text-xl hover:text-gray-400">

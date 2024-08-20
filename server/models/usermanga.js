@@ -65,14 +65,15 @@ class UserManga {
     }
   }
 
+  /*
   static async getCompletedMangaCount(user_id) {
     const query =
-      "SELECT COUNT(*) AS count FROM usermanga where user_id = ? AND reading_status = 'Completed' ";
+      "SELECT COUNT(*) AS count FROM usermanga where user_id = ? AND reading_status = 'Completed'";
     const values = [user_id];
 
     try {
-      const [result] = await connection.query(query, values);
-      return result[0].count;
+      const [result] = await connection.promise().query(query, values);
+      return result[0];
     } catch (error) {
       console.error("Error retrieving completed manga count");
       throw error;
@@ -80,12 +81,12 @@ class UserManga {
   }
   static async getPlannedMangaCount(user_id) {
     const query =
-      "SELECT COUNT(*) AS count FROM usermanga where user_id = ? AND reading_status = 'Plan to Read' ";
+      "SELECT COUNT(*) AS count FROM usermanga where user_id = ? AND reading_status = 'Plan to Read'";
     const values = [user_id];
 
     try {
-      const [result] = await connection.query(query, values);
-      return result[0].count;
+      const [result] = await connection.promise().query(query, values);
+      return result[0];
     } catch (error) {
       console.error("Error retrieving completed manga count");
       throw error;
@@ -93,17 +94,19 @@ class UserManga {
   }
   static async getCurrentMangaCount(user_id) {
     const query =
-      "SELECT COUNT(*) AS count FROM usermanga where user_id = ? AND reading_status = 'Currently Reading' ";
+      "SELECT COUNT(*) AS count FROM usermanga where user_id = ? AND reading_status = 'Currently Reading'";
     const values = [user_id];
 
     try {
-      const [result] = await connection.query(query, values);
-      return result[0].count;
+      const [result] = await connection.promise().query(query, values);
+      console.log("Result: ", result);
+      return result[0];
     } catch (error) {
       console.error("Error retrieving completed manga count");
       throw error;
     }
   }
+  */
 }
 
 module.exports = UserManga;
