@@ -1,76 +1,21 @@
-# Getting Started with Create React App
+# MangaCat (Manga Catalog)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ## Project Details
 
 This project creates a Manga Catalog which will pull different mangas from the Anilist API and allow users to keep track of manga they've completed. This project is built using React, Node, and MySQL.
 
 To run the application navigate into the server directory and run the following commands: **node server.js** and **curl -X POST http://localhost:8000/api/populate** in a separate CMD navigate to the client directory and run the following command: **npm start**
+
+## Overview
+
+Welcome to MangaCat! This project aims to provide its users with the ability to easily track manga they've planned to read, are currently reading, or have already completed. This project also aims to allow users to rate manga they have previously interacted with. This project currently contains 1000 of the most popular manga found on AniList which the user will be able to sift through.
+
+## Current Implementation
+
+Currently MangaCat gives users the basic functionality of adding manga into their manga list labeling them as **Plan to Read**, **Currently Reading**, or **Completed**. Users are also able to rate manga that they are currently reading or have completed. Users also have the ability to view their manga list containing manga they've interacted with as well as viewing the entire manga catalog stored on MangaCat.
+
+## Future changes
+
+MangaCat will implement a recommendation system in the future allowing users to find recommendations based upon manga they have within their mangalist. MangaCat also aims to allow users the ability to see the number of manga they've read or are currently reading based on genre.

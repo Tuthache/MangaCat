@@ -4,7 +4,6 @@ import Sidebar from "../components/Sidebar";
 
 const Profile = () => {
   const [user, setUser] = useState("");
-  const [userFetched, setUserFetched] = useState(false);
   const [completedMangaCount, setCompletedMangaCount] = useState(0);
   const [plannedMangaCount, setPlannedMangaCount] = useState(0);
   const [currentMangaCount, setCurrentMangaCount] = useState(0);
@@ -22,7 +21,6 @@ const Profile = () => {
       })
       .then((data) => {
         setUser(data);
-        setUserFetched(true);
       })
       .catch((error) => {
         console.error("Error fetching user data: ", error);
@@ -30,7 +28,7 @@ const Profile = () => {
   }, []);
 
   useEffect(() => {
-    if (userFetched && user && user.user_id) {
+    if (user.user_id) {
       fetch(
         `http://localhost:8000/usermanga/getCompletedManga?user_id=${user.user_id}`,
         {
@@ -108,17 +106,17 @@ const Profile = () => {
       <div className="flex flex-1">
         <Sidebar user={user} />
         <div className="flex-1 bg-gray-700 p-6">
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-rows-3 gap-10">
             <div className="bg-red-500 text-white text-center p-4 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold">Completed</h3>
+              <h3 className="text-xl font-bold">Manga Completed</h3>
               <p className="text-2xl">{completedMangaCount}</p>
             </div>
             <div className="bg-blue-500 text-white text-center p-4 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold">Planned</h3>
+              <h3 className="text-xl font-bold">Manga Planned</h3>
               <p className="text-2xl">{plannedMangaCount}</p>
             </div>
             <div className="bg-green-500 text-white text-center p-4 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold">Currently Reading</h3>
+              <h3 className="text-xl font-bold">Manga Currently Reading</h3>
               <p className="text-2xl">{currentMangaCount}</p>
             </div>
           </div>

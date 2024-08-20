@@ -38,7 +38,7 @@ async function populateDatabase(req, res) {
 
     //console.log("Fetched manga data: ", mangaData);
 
-    for (let page = 1; page <= 5; page++) {
+    for (let page = 1; page <= 20; page++) {
       const mangaData = await fetchMangaData(page);
       allMangaData.push(...mangaData); // Aggregate data from all pages
     }
