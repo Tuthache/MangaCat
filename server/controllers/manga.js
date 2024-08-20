@@ -34,11 +34,16 @@ async function retrieveManga(req, res) {
 
 async function populateDatabase(req, res) {
   try {
-    const mangaData = await fetchMangaData();
+    const allMangaData = [];
 
     //console.log("Fetched manga data: ", mangaData);
 
-    const mangaPromises = mangaData.map((manga) => {
+    for (let page = 1; page <= 5; page++) {
+      const mangaData = await fetchMangaData(page);
+      allMangaData.push(...mangaData); // Aggregate data from all pages
+    }
+
+    const mangaPromises = allMangaData.map((manga) => {
       const manga_id = manga.id;
       const title = manga.title.romaji;
       const author = manga.staff.nodes.map((node) => node.name.full).join(", ");
