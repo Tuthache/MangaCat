@@ -11,6 +11,7 @@ const Manga = () => {
 
   const [filteredUserMangaList, setFilteredUserMangaList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedGenres, setSelectedGenres] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:8000/userInfo", {
@@ -57,10 +58,21 @@ const Manga = () => {
       const matchesSearchTerm = manga.title
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
-      return matchesSearchTerm;
+      const matchesGenre =
+        selectedGenres.length === 0 ||
+        selectedGenres.some((genre) => manga.genre.includes(genre));
+      return matchesSearchTerm && matchesGenre;
     });
     setFilteredUserMangaList(filteredList);
-  }, [searchTerm, userMangaList]);
+  }, [searchTerm, selectedGenres, userMangaList]);
+
+  const handleGenreChange = (genre) => {
+    setSelectedGenres((prevSelected) =>
+      prevSelected.includes(genre)
+        ? prevSelected.filter((g) => g !== genre)
+        : [...prevSelected, genre]
+    );
+  };
 
   const handleMangaClick = (manga) => {
     setSelectedManga(manga);
@@ -111,6 +123,42 @@ const Manga = () => {
               }}
               className="p-2 mb-4 w-full"
             ></input>
+          </div>
+          <div className="mb-4 p-4">
+            <h3 className="text-white">Filter by Genre:</h3>
+            <div className="flex flex-wrap">
+              {[
+                "Action",
+                "Adventure",
+                "Comedy",
+                "Drama",
+                "Ecchi",
+                "Fantasy",
+                "Horror",
+                "Mahou Shoujo",
+                "Mecha",
+                "Music",
+                "Mystery",
+                "Psychological",
+                "Romance",
+                "Sci-fi",
+                "Slice of Life",
+                "Sports",
+                "Supernatural",
+                "Thriller",
+              ].map((genre) => (
+                <label key={genre} className="mr-2 text-white">
+                  <input
+                    type="checkbox"
+                    value={genre}
+                    onChange={() => handleGenreChange(genre)}
+                    checked={selectedGenres.includes(genre)}
+                    className="mr-1"
+                  />
+                  {genre}
+                </label>
+              ))}
+            </div>
           </div>
           <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {filteredUserMangaList.length > 0 ? (
