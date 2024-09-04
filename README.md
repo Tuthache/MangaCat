@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project creates a Manga Catalog which will pull different mangas from the Anilist API and allow users to keep track of manga they've completed. This project is built using React, Node, and MySQL.
 
-To run the application navigate into the server directory and run the following commands: **node server.js** and **curl -X POST http://localhost:8000/api/populate** in a separate CMD navigate to the client directory and run the following command: **npm start**
+Install the required dependencies using **npm install**, make sure to have a MySQL database named "mangacat". The required tables will be automatically created. To run the application navigate into the server directory and run the following commands: **node server.js** and **curl -X POST http://localhost:8000/api/populate** in a separate CMD navigate to the client directory and run the following command: **npm start**
 
 ## Overview
 
@@ -18,4 +18,4 @@ Currently MangaCat gives users the basic functionality of adding manga into thei
 
 ## Future changes
 
-MangaCat will implement a recommendation system in the future allowing users to find recommendations based upon manga they have within their mangalist. MangaCat also aims to allow users the ability to see the number of manga they've read or are currently reading based on genre.
+MangaCat will implement a recommendation system in the future allowing users to find recommendations based upon manga they have within their mangalist. MangaCat also aims to allow users the ability to see the number of manga they've read or are currently reading based on genre. Once the recommendation feature is finished MangaCat will be published to the web with full functionality.
